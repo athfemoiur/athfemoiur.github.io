@@ -28,31 +28,60 @@
 
         .contact-info {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 16px;
+            width: 100%;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+            gap: 24px;
+        }
+
+        /* Image styling */
+        .hero-image img {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+        }
+
+        /* Desktop layout: image left, text right */
+        @media (min-width: 768px) {
+            .hero-content {
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                text-align: left;
+                gap: 48px;
+            }
+
+            .hero-text {
+                max-width: 800px;
+            }
         }
 
         .contact-item {
             display: flex;
             align-items: center;
             gap: 12px;
-            padding: 14px 16px;
-            background-color: #bdbdbd; /* darker gray */
-            border-radius: 8px;
+            padding: 16px;
+            background-color: #636363; /* dark gray */
+            border-radius: 10px;
             text-decoration: none;
-            color: #000;
+            color: #f0f0f0; /* light text for contrast */
             font-weight: 500;
             transition: background 0.3s, transform 0.2s;
         }
 
-        .contact-item i {
-            font-size: 18px;
-            width: 24px;
-            text-align: center;
-        }
-
         .contact-item:hover {
-            background-color: #9e9e9e;
+            background-color: #1f1f1f; /* darker gray on hover */
             transform: translateY(-2px);
         }
 
@@ -567,28 +596,6 @@
             align-items: center;
         }
 
-        .contact-info {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .contact-item {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1rem;
-            padding: 1rem;
-            background: #f8f9fa;
-            border-radius: 10px;
-            transition: all 0.3s ease;
-        }
-
-        .contact-item:hover {
-            background: #667eea;
-            color: white;
-            transform: translateX(5px);
-        }
 
         .contact-item i {
             margin-right: 1rem;
@@ -669,13 +676,18 @@
 
 <section id="home" class="hero">
     <div class="hero-content">
-        <h1>AmirHossein Bonakdar</h1>
-        <p class="subtitle">Senior Backend Software Engineer</p>
-        <p class="description">
-            Backend Software Engineer with 5+ years of experience in production-grade development using Python & Go.
-            Engineered scalable systems for high-traffic services (5M+ users).
-        </p>
-        <a href="#contact" class="cta-button">Get In Touch</a>
+        <div class="hero-image">
+            <img src="profile.jpg" alt="AmirHossein Bonakdar">
+        </div>
+        <div class="hero-text">
+            <h1>AmirHossein Bonakdar</h1>
+            <p class="subtitle">Senior Backend Software Engineer</p>
+            <p class="description">
+                Backend Software Engineer with 5+ years of experience in production-grade development using Python & Go.
+                Engineered scalable systems for high-traffic services (5M+ users).
+            </p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
+        </div>
     </div>
 </section>
 
@@ -952,7 +964,7 @@
                 <div class="language-name">English</div>
                 <div class="language-level">C1 Level ( Fluent )</div>
             </div>
-                        <div class="language-item">
+            <div class="language-item">
                 <div class="language-name">Persian</div>
                 <div class="language-level">C2 Level ( Native )</div>
             </div>
