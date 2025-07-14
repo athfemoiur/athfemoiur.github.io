@@ -1,60 +1,1046 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Amirhossein Bonakdar - Resume</title>
-  <style>
-    body { font-family: sans-serif; max-width: 800px; margin: 2rem auto; line-height: 1.6; padding: 0 1rem; }
-    h1, h2 { color: #333; }
-    h1 { border-bottom: 2px solid #eee; padding-bottom: 0.2em; }
-    .section { margin-top: 2rem; }
-    .skills span { display: inline-block; background: #f3f3f3; padding: 4px 8px; margin: 3px; border-radius: 4px; font-size: 0.9em; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <title>AmirHossein Bonakdar - Senior Software Engineer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background-color: #bdbdbd; /* darker gray */
+            border-radius: 8px;
+            text-decoration: none;
+            color: #000;
+            font-weight: 500;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .contact-item i {
+            font-size: 18px;
+            width: 24px;
+            text-align: center;
+        }
+
+        .contact-item:hover {
+            background-color: #9e9e9e;
+            transform: translateY(-2px);
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #ffd700;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #ffd700;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="rgba(255,255,255,0.1)" points="0,1000 1000,0 1000,1000"/></svg>');
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        .hero-content {
+            z-index: 2;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero .subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero .description {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #ffd700, #ffed4e);
+            color: #333;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-white {
+            background: white;
+        }
+
+        .section-gray {
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .stat-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .stat-label {
+            margin-top: 0.5rem;
+            color: #666;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-tag {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: scale(1.05);
+        }
+
+        /* Experience Section */
+        .experience-timeline {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .experience-timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .experience-item {
+            position: relative;
+            margin-bottom: 3rem;
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-left: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .experience-item:hover {
+            transform: translateX(10px);
+        }
+
+        .experience-item::before {
+            content: '';
+            position: absolute;
+            left: -3rem;
+            top: 2rem;
+            width: 12px;
+            height: 12px;
+            background: #667eea;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 1rem;
+        }
+
+        .experience-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .experience-company {
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .experience-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .experience-description {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .experience-achievements {
+            margin-top: 1rem;
+        }
+
+        .experience-achievements h4 {
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .experience-achievements ul {
+            margin-left: 1rem;
+            color: #666;
+        }
+
+        .experience-achievements li {
+            margin-bottom: 0.3rem;
+        }
+
+        /* Education Section */
+        .education-content {
+            display: flex;
+            justify-content: center;
+        }
+
+        .education-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+            transition: transform 0.3s ease;
+        }
+
+        .education-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .education-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .education-institution {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .education-details {
+            margin-top: 0.5rem;
+        }
+
+        .education-gpa {
+            color: #333;
+            font-weight: bold;
+            margin-bottom: 0.3rem;
+        }
+
+        .education-ta {
+            color: #666;
+            font-style: italic;
+        }
+
+        .education-date {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Languages Section */
+        .languages-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .language-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .language-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .language-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .language-level {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 1rem;
+        }
+
+        .language-bar {
+            background: #f0f0f0;
+            height: 8px;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .language-progress {
+            height: 100%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            transition: width 0.3s ease;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h3 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #f0f0f0;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .contact-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .contact-info {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-item a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .subtitle {
+                font-size: 1.2rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                justify-content: center;
+            }
+
+            .experience-timeline {
+                padding-left: 1rem;
+            }
+
+            .experience-item {
+                margin-left: 1rem;
+            }
+        }
+
+        /* Scroll animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
 </head>
 <body>
-  <h1>Amirhossein Bonakdar</h1>
-  <p><strong>Senior Backend Engineer</strong></p>
-  <p>Email: your.email@example.com | <a href="https://linkedin.com/in/your-profile">LinkedIn</a> | <a href="https://github.com/yourusername">GitHub</a></p>
+<header>
+    <nav class="container">
+        <div class="logo">AmirHossein Bonakdar</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+</header>
 
-  <div class="section">
-    <h2>Summary</h2>
-    <p>Backend engineer with 5+ years of experience building scalable services using Python and Go. Specialized in distributed systems, performance optimization, and full-service ownership from design to deployment.</p>
-  </div>
-
-  <div class="section">
-    <h2>Responsibilities</h2>
-    <ul>
-      <li>Designed, developed, and maintained 10+ critical backend services</li>
-      <li>Led architecture for cross-functional systems and integrations</li>
-      <li>Mentored junior developers and conducted code reviews</li>
-      <li>Supported on-call duties and implemented observability</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Achievements</h2>
-    <ul>
-      <li>Improved availability by 25%, reduced response time by 30%</li>
-      <li>Increased cache consistency by 300%, cut infra costs by 40%</li>
-      <li>Developed marketing automation service saving 300% in costs</li>
-      <li>Optimized data pipelines and PostgreSQL performance by 25%</li>
-    </ul>
-  </div>
-
-  <div class="section">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span>Python</span><span>Go</span><span>Django</span><span>FastAPI</span><span>Flask</span>
-      <span>PostgreSQL</span><span>Redis</span><span>Docker</span><span>Kubernetes</span>
-      <span>Distributed Systems</span><span>Microservices</span><span>Linux</span>
+<section id="home" class="hero">
+    <div class="hero-content">
+        <h1>AmirHossein Bonakdar</h1>
+        <p class="subtitle">Senior Backend Software Engineer</p>
+        <p class="description">
+            Backend Software Engineer with 5+ years of experience in production-grade development using Python & Go.
+            Engineered scalable systems for high-traffic services (5M+ users).
+        </p>
+        <a href="#contact" class="cta-button">Get In Touch</a>
     </div>
-  </div>
+</section>
 
-  <div class="section">
-    <h2>Contact</h2>
-    <p>📬 Email: your.email@example.com</p>
-    <p>🌐 Website: <a href="https://your-domain.com">https://your-domain.com</a></p>
-  </div>
+<section id="about" class="section-white">
+    <div class="container">
+        <h2 class="section-title fade-in">About Me</h2>
+        <div class="about-content fade-in">
+            <div>
+                <div class="stats">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">20+</div>
+                        <div class="stat-label">Projects</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">6+</div>
+                        <div class="stat-label">Teams</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">Features Delivered</div>
+                    </div>
+                </div>
+            </div>
+            <div class="about-text">
+                <p>
+                    I'm a Senior Backend Software Engineer with extensive experience in building scalable,
+                    production-grade systems. I specialize in Python (Django) and Go, with a track record
+                    of engineering solutions that serve millions of users.
+                </p>
+                <p>
+                    Throughout my career, I've taken end-to-end ownership of critical microservices,
+                    collaborated with cross-functional teams, and consistently delivered high-impact
+                    solutions. I'm passionate about system design, performance optimization, and
+                    mentoring fellow developers.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="skills" class="section-gray">
+    <div class="container">
+        <h2 class="section-title fade-in">Skills & Technologies</h2>
+        <div class="skills-grid fade-in">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Go</span>
+                    <span class="skill-tag">C++</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Django</span>
+                    <span class="skill-tag">Flask</span>
+                    <span class="skill-tag">FastAPI</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Databases & Storage</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">PostgreSQL</span>
+                    <span class="skill-tag">MySQL</span>
+                    <span class="skill-tag">Redis</span>
+                    <span class="skill-tag">MongoDB</span>
+                    <span class="skill-tag">ClickHouse</span>
+                    <span class="skill-tag">MinIO</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Message Queues</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">RabbitMQ</span>
+                    <span class="skill-tag">Kafka</span>
+                    <span class="skill-tag">NATS</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Infrastructure & DevOps</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Kubernetes</span>
+                    <span class="skill-tag">OpenShift</span>
+                    <span class="skill-tag">GitLab CI/CD</span>
+                    <span class="skill-tag">ArgoCD</span>
+                    <span class="skill-tag">Ansible</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Monitoring & Testing</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Prometheus</span>
+                    <span class="skill-tag">Grafana</span>
+                    <span class="skill-tag">Open Telemetry</span>
+                    <span class="skill-tag">Unit Testing</span>
+                    <span class="skill-tag">Integration Testing</span>
+                    <span class="skill-tag">Stress Testing</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Architecture & Design</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Microservices</span>
+                    <span class="skill-tag">Distributed Systems</span>
+                    <span class="skill-tag">Design Patterns</span>
+                    <span class="skill-tag">Event-Driven Architecture</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="experience" class="section-white">
+    <div class="container">
+        <h2 class="section-title fade-in">Work Experience</h2>
+        <div class="experience-timeline fade-in">
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Senior Software Engineer</div>
+                        <div class="experience-company">Snapp, Tehran, Iran</div>
+                    </div>
+                    <div class="experience-date">Aug 2024 - Present</div>
+                </div>
+                <div class="experience-description">
+                    <strong>Responsibilities:</strong>
+                    <ul>
+                        <li>Took end-to-end ownership (design, development, maintenance) of 4 critical microservices
+                            within a 9-member Scrum team
+                        </li>
+                        <li>Collaborated closely with Product Managers and ML Engineers to align solutions with business
+                            objectives
+                        </li>
+                        <li>Played a key role in system and solution design for inter-team services and cross-functional
+                            architecture
+                        </li>
+                        <li>Designed distributed services using microservices and event-driven architectures for 3
+                            projects
+                        </li>
+                    </ul>
+                </div>
+                <div class="experience-achievements">
+                    <h4>Achievements:</h4>
+                    <ul>
+                        <li>Improved availability by 25%, cache consistency by 300%, reducing response time by 30% and
+                            resource usage by 40%
+                        </li>
+                        <li>Optimized PostgreSQL utilization by 25%, resulting 30% increase in data pipelines speed</li>
+                        <li>Built 10+ Grafana dashboards and 20+ Prometheus alerts, improving monitoring coverage and
+                            increasing uptime by 8%
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Software Engineer</div>
+                        <div class="experience-company">Miare, Tehran, Iran</div>
+                    </div>
+                    <div class="experience-date">Dec 2021 - Aug 2024</div>
+                </div>
+                <div class="experience-description">
+                    <strong>Responsibilities:</strong>
+                    <ul>
+                        <li>Collaborated with 6 backend developers to build and maintain scalable, reliable services in
+                            a high-traffic production system
+                        </li>
+                        <li>Delivered 20+ features across 3 projects using different technology stacks (Django,
+                            Golang)
+                        </li>
+                        <li>Authored 10+ technical tasks and handled off to backend team members to reduce technical
+                            debts
+                        </li>
+                        <li>Mentored 3 new joiners through onboarding, pair programming, and code reviews for 6 months
+                        </li>
+                        <li>Managed on-call rotations (2 days/week) and contributed to disaster recovery planning</li>
+                    </ul>
+                </div>
+                <div class="experience-achievements">
+                    <h4>Achievements:</h4>
+                    <ul>
+                        <li>Acted as a key communication bridge between backend and client teams (frontend and
+                            Android)
+                        </li>
+                        <li>Reduced response times by up to 50% by implementing concurrent patterns and optimizing
+                            database queries
+                        </li>
+                        <li>Developed a custom Marketing Automation service using Django resulting 300% reduction in
+                            costs
+                        </li>
+                        <li>Increased test coverage by 5% on a critical production service using unit, integration and
+                            load testing
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Backend Developer</div>
+                        <div class="experience-company">Bitpin, Tehran, Iran</div>
+                    </div>
+                    <div class="experience-date">Sep 2021 - Dec 2021</div>
+                </div>
+                <div class="experience-description">
+                    <strong>Responsibilities:</strong>
+                    <ul>
+                        <li>Engineered an advanced trading robot service with 5k+ daily users from scratch in 3 months
+                        </li>
+                        <li>Integrated 2 cryptocurrency networks with the backend core service with 5k+ daily
+                            transactions
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="experience-item">
+                <div class="experience-header">
+                    <div>
+                        <div class="experience-title">Junior Backend Developer</div>
+                        <div class="experience-company">Titrazh, Tehran, Iran</div>
+                    </div>
+                    <div class="experience-date">Jun 2021 - Sep 2021</div>
+                </div>
+                <div class="experience-description">
+                    <strong>Responsibilities:</strong>
+                    <ul>
+                        <li>Collaborated with senior developers to debug, test, and optimize backend codes in a 6 member
+                            agile team.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="education" class="section-white">
+    <div class="container">
+        <h2 class="section-title fade-in">Education</h2>
+        <div class="education-content fade-in">
+            <div class="education-item">
+                <div class="education-header">
+                    <div>
+                        <div class="education-title">Bachelor's of Computer Engineering</div>
+                        <div class="education-institution">Azad University, Science And Research Branch</div>
+                        <div class="education-details">
+                            <div class="education-gpa">GPA: 3.7/4.0</div>
+                            <div class="education-ta">Teaching Assistant - Advanced Programming (2 years)</div>
+                        </div>
+                    </div>
+                    <div class="education-date">Dec 2020 - Dec 2024</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="languages" class="section-gray">
+    <div class="container">
+        <h2 class="section-title fade-in">Languages</h2>
+        <div class="languages-content fade-in">
+            <div class="language-item">
+                <div class="language-name">English</div>
+                <div class="language-level">C1 Level ( Fluent )</div>
+            </div>
+                        <div class="language-item">
+                <div class="language-name">Persian</div>
+                <div class="language-level">C2 Level ( Native )</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="section-white">
+    <div class="container">
+        <h2 class="section-title fade-in">Get In Touch</h2>
+        <div class="contact-content fade-in">
+            <div class="contact-info">
+                <a class="contact-item" href="mailto:work.athfemoiur@gmail.com">
+                    <i class="fas fa-envelope"></i> work.athfemoiur@gmail.com
+                </a>
+                <a class="contact-item" href="tel:+989381645666">
+                    <i class="fas fa-phone"></i> (+98) 9381645666
+                </a>
+                <a class="contact-item" href="https://www.linkedin.com/in/athfemoiur" target="_blank">
+                    <i class="fab fa-linkedin"></i> LinkedIn Profile
+                </a>
+                <a class="contact-item" href="https://github.com/athfemoiur" target="_blank">
+                    <i class="fab fa-github"></i> Github Profile
+                </a>
+                <a class="contact-item" href="https://t.me/athfemoiur" target="_blank">
+                    <i class="fab fa-telegram"></i> Telegram
+                </a>
+                <a class="contact-item" href="https://wa.me/989381645666" target="_blank">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>&copy; 2025 AmirHossein Bonakdar. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+    });
+
+    // Scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.fade-in').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+        const header = document.querySelector('header');
+        if (window.scrollY > 100) {
+            header.style.background = 'rgba(255, 255, 255, 0.95)';
+            header.style.backdropFilter = 'blur(20px)';
+        } else {
+            header.style.background = 'rgba(255, 255, 255, 0.1)';
+            header.style.backdropFilter = 'blur(10px)';
+        }
+    });
+
+    // Parallax effect for hero section
+    window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        const hero = document.querySelector('.hero');
+        hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+    });
+</script>
 </body>
 </html>
