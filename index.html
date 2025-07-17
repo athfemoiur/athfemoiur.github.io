@@ -116,7 +116,17 @@
             }
         }
 
+        .profile-picture {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px auto;
+            display: block;
+        }
+
         .hero-content {
+            padding-top: 120px;
             z-index: 2;
             animation: fadeInUp 1s ease-out;
         }
@@ -627,8 +637,7 @@
 
 <section id="home" class="hero">
     <div class="hero-content">
-        <img src="profile.jpg" alt="Profile Picture"
-             style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
+        <img src="profile.jpg" alt="Profile Picture" class="profile-picture">
         <h1>AmirHossein Bonakdar</h1>
         <p class="subtitle">Senior Backend Software Engineer</p>
         <p class="description"><strong>Birthday:</strong> 23 July 2002</p>
