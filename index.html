@@ -357,18 +357,24 @@
         }
 
         .experience-description {
-            color: #666;
+            color: #000000;
             line-height: 1.6;
         }
 
-        .experience-achievements {
-            margin-top: 1rem;
+        .experience-description ul {
+            margin-left: 1rem;
+            color: #666;
         }
 
-        .experience-achievements h4 {
-            color: #333;
-            margin-bottom: 0.5rem;
+        .experience-description li {
+            margin-bottom: 0.3rem;
         }
+
+        .experience-achievements {
+            color: #000000;
+            line-height: 1.6;
+        }
+
 
         .experience-achievements ul {
             margin-left: 1rem;
@@ -470,18 +476,6 @@
             margin-bottom: 1rem;
         }
 
-        .language-bar {
-            background: #f0f0f0;
-            height: 8px;
-            border-radius: 4px;
-            overflow: hidden;
-        }
-
-        .language-progress {
-            height: 100%;
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            transition: width 0.3s ease;
-        }
 
         /* Contact Form */
         .contact-form {
@@ -514,21 +508,6 @@
         .form-group textarea:focus {
             outline: none;
             border-color: #667eea;
-        }
-
-        .submit-btn {
-            background: linear-gradient(45deg, #667eea, #764ba2);
-            color: white;
-            padding: 0.8rem 2rem;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-
-        .submit-btn:hover {
-            transform: translateY(-2px);
         }
 
         .contact-content {
@@ -648,8 +627,11 @@
 
 <section id="home" class="hero">
     <div class="hero-content">
+        <img src="profile.jpg" alt="Profile Picture"
+             style="width: 200px; height: 200px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
         <h1>AmirHossein Bonakdar</h1>
         <p class="subtitle">Senior Backend Software Engineer</p>
+        <p class="description"><strong>Birthday:</strong> 23 July 2002</p>
         <p class="description">
             Backend Software Engineer with 5+ years of experience in production-grade development using Python & Go.
             Engineered scalable systems for high-traffic services (5M+ users).
@@ -805,7 +787,7 @@
                     </ul>
                 </div>
                 <div class="experience-achievements">
-                    <h4>Achievements:</h4>
+                    <strong>Achievements:</strong>
                     <ul>
                         <li>Improved availability by 25%, cache consistency by 300%, reducing response time by 30% and
                             resource usage by 40%
